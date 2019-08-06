@@ -1,0 +1,50 @@
+<h1> Interruptions </h1>
+
+<div class="card">
+  <span>
+  <p>
+    Total: <%= @total %>
+  </p>
+
+  <p>
+    Assuming $40 dev/hour, cost of interruption is: <strong><%= number_to_currency(@total_cost)%> </strong>
+  </p>
+</div>
+
+<div class="interruptiongrid">
+    <span>
+        <strong>Name</strong>
+    </span>
+    <span>
+        <strong>Reason</strong>
+    </span>
+    <span>
+        <strong>Type/Status</strong>
+    </span>
+    <span>
+        <strong>Happened At</strong>
+    </span>
+    <span>
+        <strong>Created At</strong>
+    </span>
+
+    <% @interruptions.each do |interruption| %>
+      <span>
+        <%= interruption.name %>
+      </span>
+      <span>
+        <%= interruption.reason%>
+      </span>
+      <span>
+        <%= interruption.status %>
+      </span>
+      <span>
+        <%= time_ago_in_words(interruption.happened_at) %>
+      </span>
+      <span>
+        <%= time_ago_in_words(interruption.created_at) %>
+      </span>
+    <% end %>
+</div>
+
+<%= render "form" %>

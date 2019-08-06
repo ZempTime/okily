@@ -1,0 +1,13 @@
+.interruptiongrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  margin-bottom: 10px;
+}
+
+.interruptiongrid > span {
+  padding: 8px 4px;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}

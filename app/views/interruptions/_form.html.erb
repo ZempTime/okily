@@ -1,0 +1,37 @@
+<%= form_for @interruption do |f| %>
+  <fieldset>
+    <h2>Log an Interuption</h2>
+
+    <% if @interruption.errors.any? %>
+      <ul>
+        <% @interruption.errors.full_messages.each do |message| %>
+          <li> <%= message %> </li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <p>
+      <%= f.label :name %>
+      <%= f.select :name, options_for_select(Interruption::TEAM.to_a) %>
+    </p>
+
+    <p>
+      <%= f.label :reason %>
+      <%= f.text_field :reason, placeholder: "Reason..."  %>
+    </p>
+
+    <p>
+      <%= f.label :status, "Type/Status:" %>
+      <%= f.collection_radio_buttons :status, Interruption.statuses, :first, :first %>
+    </p>
+
+    <p>
+      <%= f.label :happened_at %>
+      <%= f.datetime_select :happened_at %>
+    </p>
+
+    <p>
+      <%= f.submit "Log Interruption" %>
+    </p>
+  </fieldset>
+<% end %>
